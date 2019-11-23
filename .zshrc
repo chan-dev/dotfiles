@@ -101,3 +101,6 @@ alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 export NVM_DIR=~/.nvm
  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

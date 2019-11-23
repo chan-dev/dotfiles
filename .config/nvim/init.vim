@@ -204,6 +204,11 @@ Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sleuth'
+" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install
+" script
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 

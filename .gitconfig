@@ -12,3 +12,10 @@
     cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [core]
 	editor = vim
+[alias]
+    ol = log --oneline
+    dc = diff --cached
+    dd = diff --check --dirstat --find-copies --find-renames --histogram --color
+    s = status
+    ll = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset %Cblue%G?%Creset'
+    uncommit = reset --soft HEAD~1

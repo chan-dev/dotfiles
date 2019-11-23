@@ -67,6 +67,11 @@ set sidescrolloff=5
 set backspace=indent,eol,start
 set matchpairs+=<:> " use % to jump between pairs
 
+" Folding
+set foldmethod=syntax
+set foldnestmax=10
+set nofoldenable " don't fold by default
+set foldlevel=1
 
 " UI Settings
 if has('gui_running')

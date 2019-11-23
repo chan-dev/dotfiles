@@ -47,6 +47,7 @@ set omnifunc=ale#completion#OmniFunc
 set noswapfile
 set nobackup
 set nowb
+set directory=/tmp
 
 " Whitespace & Indentation
 set nowrap
@@ -56,6 +57,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
+set smarttab
 set noshiftround
 set autoindent
 set pastetoggle=<F2>
@@ -79,8 +81,8 @@ if has('gui_running')
   set guioptions-=T " remove toolbar
 endif
 
-set nu
-set nornu
+set number
+set norelativenumber
 " toggle relativenumber
 map <leader>rn :set rnu! rnu?<CR>
 set ruler
@@ -94,6 +96,7 @@ set showmode
 set showcmd
 set cursorcolumn
 set cursorline
+set lazyredraw " will not redraw the screen while running macros
 set bg=dark
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
@@ -111,6 +114,16 @@ set showmatch
 
 " Rendering
 set ttyfast
+
+" Menu compilation (from vim-opinion repo)
+set wildmenu                    "wmnu:  enhanced ed command completion
+set wildignore+=*.~             "wig:   ignore compiled objects and backups
+set wildignore+=*.o,*.obj,*.pyc
+set wildignore+=.sass-cache,tmp
+set wildignore+=node_modules
+set wildignore+=log,logs
+set wildignore+=vendor
+set wildmode=longest:full,list:full
 
 " Color scheme (terminal)
 " set t_Co=256

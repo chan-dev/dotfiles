@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export CUSTOM_SCRIPTS=/home/chan-dev/Coding/bash/scripts
+export PATH=$PATH:$CUSTOM_SCRIPTS
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/chan-dev/.oh-my-zsh"
 

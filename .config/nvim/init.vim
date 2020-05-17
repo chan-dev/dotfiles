@@ -14,6 +14,7 @@ filetype plugin indent on
 call plug#begin('~/.vim/plugged')
 
 " -----Configuration-----
+set rtp+=~/.fzf
 let mapleader = ","
 
 " Encoding

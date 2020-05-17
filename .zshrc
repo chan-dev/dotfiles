@@ -124,6 +124,9 @@ alias -g T='| tail'
 alias -g L='| less'
 alias -g F='| fzf'
 
+# Key Bindings
+bindkey '^ ' autosuggest-accept
+
 export NVM_DIR=~/.nvm
  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 

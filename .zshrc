@@ -102,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshrc="vim ~/.zshrc"
+alias tmuxconf="vim ~/.tmux.conf"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias cls='clear'
@@ -121,6 +122,8 @@ alias mv='mv -i'
 alias -g G='| grep'
 alias -g T='| tail'
 alias -g L='| less'
+alias -g F='| fzf'
+
 export NVM_DIR=~/.nvm
  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 

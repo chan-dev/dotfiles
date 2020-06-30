@@ -421,6 +421,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install

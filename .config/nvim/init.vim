@@ -20,8 +20,6 @@ let mapleader = ","
 " Encoding
 set encoding=utf-8
 
-let g:airline_theme='badwolf'
-
 " Linters
 " set pyxversion=3
 let g:ale_fix_on_save = 1
@@ -129,10 +127,26 @@ set wildignore+=vendor
 set wildmode=longest:full,list:full
 
 " Color scheme (terminal)
-" set t_Co=256
-" set background=dark
-" let g:solarized_termcolors=256
-" let g:solarized_termtrans=1
+set t_Co=256
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme='badwolf'
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.dirty='⚡'
 
 " -----Mappings-----
 " Quickly edit/reload config

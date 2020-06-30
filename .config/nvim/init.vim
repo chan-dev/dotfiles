@@ -160,6 +160,12 @@ map <leader>/ :set hlsearch! hlsearch?<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gl :GV!<cr> " log for current file
 nnoremap <leader>gL :GV<cr> " log all
+nnoremap <leader>gd :Gvdiff<cr>
+nmap ]j <Plug>(GitGutterNextHunk)
+nmap ]k <Plug>(GitGutterPrevHunk)
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+nmap ghp <Plug>(GitGutterPreviewHunk)
 
 " Buffers
 map <leader>b :ls<CR>:buffer<Space>

@@ -173,7 +173,7 @@ nnoremap <C-W>m <C-W>=
 nmap <leader>nt :NERDTreeToggle<CR>
 
 " -----Plugin Settings-----
-let g:user_emmet_leader_key='<Tab>'
+" let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
   \  'javascript.jsx' : {
     \      'extends' : 'jsx',

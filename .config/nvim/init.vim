@@ -179,8 +179,12 @@ nnoremap k gk
 map <leader>q gqip
 
 " Moving between current line
-nmap H 0
-nmap L $
+nnoremap H 0
+nnoremap L $
+
+" commandline mode mappings
+cnoremap H <Home>
+cnoremap L <End>
 
 " Window Navigation
 nnoremap <C-J> <C-W><C-J>

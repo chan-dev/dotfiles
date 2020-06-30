@@ -20,6 +20,8 @@ let mapleader = ","
 " Encoding
 set encoding=utf-8
 
+let g:airline_theme='badwolf'
+
 " Linters
 " set pyxversion=3
 let g:ale_fix_on_save = 1
@@ -405,6 +407,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install
 " script
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

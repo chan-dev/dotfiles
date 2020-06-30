@@ -154,7 +154,12 @@ map <leader>ev :e $MYVIMRC<CR>
 map <leader>sv :so $MYVIMRC<CR>
 
 " Searching
-map <leader>/ :set hlsearch! hlsearch?<cr> " toggle search
+map <leader>/ :set hlsearch! hlsearch?<cr>
+
+" Git
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gl :GV!<cr> " log for current file
+nnoremap <leader>gL :GV<cr> " log all
 
 " Buffers
 map <leader>b :ls<CR>:buffer<Space>

@@ -101,7 +101,7 @@ set lazyredraw " will not redraw the screen while running macros
 set bg=dark
 " Visualize tabs and newlines
 set listchars=tab:▸\ ,eol:¬
-set guifont=Operator_Mono_Bold:h16:cANSI:qDRAFT
+set guifont=Operator_Mono_Medium:h16:cANSI:qDRAFT
 " map <leader>l :set list!<CR> "Toggle tabs and EOL
 
 " Searching

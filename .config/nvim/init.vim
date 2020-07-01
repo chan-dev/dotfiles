@@ -238,6 +238,7 @@ endif
 " -----Coc Specific Settings-----
 let g:coc_global_extensions = [
   \ 'coc-pairs',
+  \ 'coc-snippets',
   \ 'coc-tsserver',
   \ 'coc-prettier',
   \ 'coc-json',
@@ -303,6 +304,11 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+" Snippets
+imap <C-l> <Plug>(coc-snippets-expand)
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 augroup mygroup
   autocmd!
@@ -440,6 +446,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Track the engine.
+Plug 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plug 'honza/vim-snippets'
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install
 " script
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

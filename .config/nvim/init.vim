@@ -183,8 +183,8 @@ nnoremap H 0
 nnoremap L $
 
 " commandline mode mappings
-cnoremap H <Home>
-cnoremap L <End>
+cnoremap <C-h> <Home>
+cnoremap <C-l> <End>
 
 " Window Navigation
 nnoremap <C-J> <C-W><C-J>

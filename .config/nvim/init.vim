@@ -30,7 +30,6 @@ let g:ale_fixers = {
 " Use ALE for completion sources for all code.
 
 " Fuzzy searching
-nnoremap <silent> <C-t> :FZF -m<cr>
 nnoremap <silent> <C-p> :Files<cr>
 
 " General Configurations
@@ -191,6 +190,9 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Tab Navigation
+nnoremap <C-t> :tabnew<cr>
 
 " Window Resizing
 " maximize window

@@ -1,8 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-export ANDROID_HOME=/home/chan-dev/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export APP_IMAGE=/home/chan-dev/.local/bin
+export PATH=$PATH:$APP_IMAGE
 
 export CUSTOM_SCRIPTS=/home/chan-dev/Coding/bash/scripts
 export PATH=$PATH:$CUSTOM_SCRIPTS

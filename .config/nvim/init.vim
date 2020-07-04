@@ -32,6 +32,10 @@ let g:ale_fixers = {
 " Fuzzy searching
 nnoremap <silent> <C-p> :Files<cr>
 
+" Jump between errors
+nmap <silent> <leader>aj :ALENext<cr>
+nmap <silent> <leader>ak :ALEPrevious<cr>
+
 " General Configurations
 set nospell
 map <leader>st :set spell!<CR>

@@ -1,13 +1,17 @@
 {
   // Require .prettierrc
-  "prettier.requireConfig": true,
+  "prettier.requireConfig": false,
   "prettier.singleQuote": true,
   "prettier.arrowParens": "avoid",
   "prettier.useTabs": false,
+  "prettier.disableLanguages": [],
 
   // Tslint on save
   "tslint.enable": true,
   "tslint.autoFixOnSave": true,
+
+  // Vetur
+  "vetur.format.enable": false,
 
   // Run prettier (and others)
   "coc.preferences.formatOnSaveFiletypes": [
@@ -18,6 +22,9 @@
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "json"
-  ]
+    "json",
+    "vue",
+    "html"
+  ],
+  "coc.preferences.extensionUpdateCheck": "never"
 }

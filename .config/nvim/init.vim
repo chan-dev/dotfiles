@@ -25,6 +25,8 @@ set encoding=utf-8
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" Note change this path when you switch nvm environment
+let g:ale_javascript_eslint_executable ='/home/chan-dev/.nvm/versions/node/v14.3.0/bin/npm/.bin/eslint'
 let g:ale_disable_lsp = 1
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1

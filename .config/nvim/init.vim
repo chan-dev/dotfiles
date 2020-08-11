@@ -24,11 +24,17 @@ set encoding=utf-8
 " set pyxversion=3
 let g:ale_disable_lsp = 1
 let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
+let g:ale_linters = {
+      \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \   'javascript': ['eslint'],
+      \   'jsx': ['eslint'],
+      \}
 let g:ale_fixers = {
       \   '*': ['remove_trailing_lines', 'trim_whitespace'],
       \   'javascript': ['eslint'],
+      \   'jsx': ['eslint'],
       \}
-" Use ALE for completion sources for all code.
 
 " Fuzzy searching
 nnoremap <silent> <C-p> :Files<cr>

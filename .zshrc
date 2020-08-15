@@ -120,7 +120,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-# Suffix aliases
+# Global aliases
 alias -g G='| grep'
 alias -g T='| tail'
 alias -g L='| less'

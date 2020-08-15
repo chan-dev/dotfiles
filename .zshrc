@@ -125,6 +125,7 @@ alias -g G='| grep'
 alias -g T='| tail'
 alias -g L='| less'
 alias -g F='| fzf'
+alias -g C='| xclip -in -selection clipboard'
 
 # Key Bindings
 bindkey '^ ' autosuggest-accept

@@ -176,6 +176,7 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gl :GV!<cr> " log for current file
 nnoremap <leader>gL :GV<cr> " log all
 nnoremap <leader>gd :Gvdiff<cr>
+nnoremap <leader>gc :Gvdiffsplit!<cr>
 nmap ]j <Plug>(GitGutterNextHunk)
 nmap ]k <Plug>(GitGutterPrevHunk)
 nmap ghs <Plug>(GitGutterStageHunk)

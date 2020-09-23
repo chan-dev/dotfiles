@@ -240,6 +240,7 @@ nnoremap <C-W>m <C-W>=
 
 " -----Plugin Remappings-----
 nmap <leader>nt :NERDTreeToggle<CR>
+nmap <leader>nf :NERDTreeFind<CR>
 
 " -----Plugin Settings-----
 " let g:user_emmet_leader_key='<Tab>'

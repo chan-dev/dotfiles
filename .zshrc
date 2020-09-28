@@ -12,6 +12,11 @@ export ZSH="/home/chan-dev/.oh-my-zsh"
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
 
+if type rg &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='rg --files'
+    export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME

@@ -189,18 +189,19 @@ vmap <C-_> <Plug>NERDCommenterToggle<CR>gv
 
 " -----Mappings-----
 " Quickly edit/reload config
-map <leader>ev :e $MYVIMRC<CR>
+map <leader>ev :tabe $MYVIMRC<CR>
 map <leader>sv :so $MYVIMRC<CR>
 
 " Searching
 map <leader>/ :set hlsearch! hlsearch?<cr>
 
 " Git
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gl :GV!<cr> " log for current file
-nnoremap <leader>gL :GV<cr> " log all
-nnoremap <leader>gd :Gvdiff<cr>
-nnoremap <leader>gc :Gvdiffsplit!<cr>
+" :tab <cmd> - execute a cmd in new tab
+nnoremap <leader>gs :tab Gstatus<cr>
+nnoremap <leader>gl :tab GV!<cr> " log for current file
+nnoremap <leader>gL :tab GV<cr> " log all
+nnoremap <leader>gd :tab Gvdiff<cr>
+nnoremap <leader>gc :tab Gvdiffsplit!<cr>
 nmap ]j <Plug>(GitGutterNextHunk)
 nmap ]k <Plug>(GitGutterPrevHunk)
 nmap ghs <Plug>(GitGutterStageHunk)

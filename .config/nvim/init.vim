@@ -351,6 +351,7 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 " Snippets
+" Note: the default jump is <C-j>
 imap <C-l> <Plug>(coc-snippets-expand)
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"

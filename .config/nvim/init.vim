@@ -220,7 +220,7 @@ nnoremap k gk
 map <leader>q gqip
 
 " Moving between current line
-nnoremap H 0
+nnoremap H ^
 nnoremap L $
 
 " commandline mode mappings

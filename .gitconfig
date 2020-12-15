@@ -25,3 +25,5 @@
     rif = rebase -i --autosquash 
     # find deleted stash or any dangling commits
     fds = fsck --no-reflog --dangling
+[url "git@github.com:"]
+	insteadOf = https://github.com/

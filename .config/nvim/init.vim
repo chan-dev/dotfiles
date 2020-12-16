@@ -473,10 +473,12 @@ augroup end
 " " You can use ctrl-n or ctr-p to navigate the history on a FZF window
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+
 " -----PLUGINS-----
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'lifepillar/vim-solarized8'
+Plug 'cseelus/vim-colors-lucid'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim'
@@ -514,5 +516,6 @@ call plug#end()
 " NOTE: this must be the after the plug#end line
 " Otherwise, it won't load the color themes on startup
 " https://github.com/altercation/vim-colors-solarized/issues/104#issuecomment-210934598
-colorscheme solarized8_high
-set bg=dark
+" colorscheme solarized8_high
+" set bg=dark
+colorscheme lucid

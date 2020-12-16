@@ -145,6 +145,9 @@ set wildignore+=vendor
 set wildmode=longest:full,list:full
 
 " Color scheme (terminal)
+if (has("termguicolors"))
+  set termguicolors
+endif
 set t_Co=256
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1

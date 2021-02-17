@@ -113,6 +113,8 @@ alias tmuxconf="vim ~/.tmux.conf"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias cls='clear'
+alias dock_pi='docker rmi $(docker images -f "dangling=true" -q)'
+alias dock_pc='docker container prune'
 
 alias dud='du -d 1 -h'
 alias duf='du -sh *'

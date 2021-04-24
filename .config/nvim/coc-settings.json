@@ -1,5 +1,6 @@
 {
   "diagnostic.displayByAle": true,
+
   // Require .prettierrc
   "prettier.requireConfig": false,
   "prettier.singleQuote": true,
@@ -19,13 +20,13 @@
     "css",
     "markdown",
     "Markdown",
-    "javascript",
-    "javascriptreact",
     "typescript",
     "typescriptreact",
     "json",
     "vue",
-    "html"
+    "html",
+    "javascript",
+    "javascriptreact"
   ],
   "coc.preferences.extensionUpdateCheck": "never"
 }

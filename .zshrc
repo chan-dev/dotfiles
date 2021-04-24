@@ -21,7 +21,7 @@ fi
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="cloud"
+ZSH_THEME="awesomepanda"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -81,7 +81,7 @@ ZSH_THEME="cloud"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow zsh-autosuggestions zsh-syntax-highlighting tmux docker docker-compose)
+plugins=(ng git git-flow gitignore zsh-autosuggestions zsh-syntax-highlighting tmux docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,12 +113,16 @@ alias tmuxconf="vim ~/.tmux.conf"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias cls='clear'
+alias findports='sudo lsof -i -P -n | grep LISTEN'
+# alias ytp='youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s"'
+# docker prune images/container
 alias dock_pi='docker rmi $(docker images -f "dangling=true" -q)'
 alias dock_pc='docker container prune'
 
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
-alias fd='find . -type d -name'
+# fd is being used by the fd app
+# alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 
 alias h='history'

@@ -26,9 +26,10 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 " Note change this path when you switch nvm environment
-let g:ale_javascript_eslint_executable ='/home/chan-dev/.nvm/versions/node/v14.3.0/bin/npm/.bin/eslint'
+" let g:ale_javascript_eslint_executable ='/home/chan-dev/.nvm/versions/node/v14.3.0/bin/npm/.bin/eslint'
 let g:ale_disable_lsp = 1
 let g:ale_fix_on_save = 1
+let g:ale_lint_on_save = 1
 let g:ale_sign_column_always = 1
 let g:ale_linters = {
       \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -45,7 +46,7 @@ let g:ale_fixers = {
 nnoremap <silent> <C-p> :Files<cr>
 nnoremap <silent> <C-f> :Rg<cr>
 " https://github.com/junegunn/fzf.vim/issues/346#issuecomment-288483704
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+" command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " Jump between errors
 nmap <silent> <leader>aj :ALENext<cr>
@@ -113,7 +114,7 @@ set wildmenu
 set laststatus=2
 set showmode
 set showcmd
-set cursorcolumn
+" set cursorcolumn
 set cursorline
 set lazyredraw " will not redraw the screen while running macros
 set bg=dark
@@ -172,6 +173,19 @@ let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty='⚡'
 
 " Nerdtree
+let g:NERDTreeGitStatusUseNerdFonts = 1
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+	\ 'Modified'  :'✹',
+	\ 'Staged'    :'✚',
+	\ 'Untracked' :'✭',
+	\ 'Renamed'   :'➜',
+	\ 'Unmerged'  :'═',
+	\ 'Deleted'   :'✖',
+	\ 'Dirty'     :'✗',
+	\ 'Ignored'   :'☒',
+	\ 'Clean'     :'✔︎',
+	\ 'Unknown'   :'?',
+\ }
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -492,7 +506,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'easymotion/vim-easymotion'
 Plug 'airblade/vim-gitgutter'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'vim-airline/vim-airline'
@@ -509,6 +522,9 @@ Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons'
 
 " Initialize plugin system
 call plug#end()
@@ -516,6 +532,5 @@ call plug#end()
 " NOTE: this must be the after the plug#end line
 " Otherwise, it won't load the color themes on startup
 " https://github.com/altercation/vim-colors-solarized/issues/104#issuecomment-210934598
-" colorscheme solarized8_high
-" set bg=dark
-colorscheme lucid
+colorscheme solarized8_high
+set bg=dark

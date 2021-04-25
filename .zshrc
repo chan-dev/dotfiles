@@ -81,7 +81,7 @@ ZSH_THEME="awesomepanda"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ng git git-flow gitignore zsh-autosuggestions zsh-syntax-highlighting tmux docker docker-compose)
+plugins=(ng git git-flow gitignore zsh-autosuggestions tmux docker docker-compose zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 

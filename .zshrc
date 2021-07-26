@@ -146,3 +146,5 @@ export NVM_DIR=~/.nvm
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases

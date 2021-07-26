@@ -212,6 +212,9 @@ map <leader>sv :so $MYVIMRC<CR>
 " Searching
 map <leader>/ :set hlsearch! hlsearch?<cr>
 
+" reselect pasted text
+nnoremap gp `[v`]
+
 " Git
 " :tab <cmd> - execute a cmd in new tab
 nnoremap <leader>gs :tab Gstatus<cr>

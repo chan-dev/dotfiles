@@ -48,6 +48,29 @@ nnoremap <silent> <C-f> :Rg<cr>
 " https://github.com/junegunn/fzf.vim/issues/346#issuecomment-288483704
 " command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
+" keep cursor centered in screen when navigation letween search results
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" retain cursor position when joining lines
+" use mark 'z'
+nnoremap J mzJ`z
+
+" Moving text in different modes
+" 1. execute :m (move) the start ('<) of the selection one line (+1)
+" 2. reselect, indent and then reselect again
+vnoremap J :m '>+1<CR>gv=gv
+" 1. execute :m (move) the end ('>) of the selection one line (+1)
+" 2. reselect, indent and then reselect again
+vnoremap K :m '<-2<CR>gv=gv
+inoremap <C-j> <esc>:m .+1<CR>==
+inoremap <C-k> <esc>:m .-2<CR>==
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+
+" nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+" nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
 " Jump between errors
 nmap <silent> <leader>aj :ALENext<cr>
 nmap <silent> <leader>ak :ALEPrevious<cr>

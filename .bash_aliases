@@ -6,3 +6,7 @@ alias nps='npm run start'
 alias npb='npm run build'
 # always use latest angular
 alias ngn='npx -p @angular/cli ng'
+
+# work related aliases
+alias build-test='npm run build:all-testing'
+alias build-dev='npm run build:all'

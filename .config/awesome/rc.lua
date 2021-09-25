@@ -330,8 +330,10 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+    -- awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+              -- {description = "run prompt", group = "launcher"}),
+    awful.key({ modkey },            "r",     function () awful.util.spawn("rofi -show drun") end,
+              {description = "run rofi launcer", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -344,13 +346,12 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
-    -- Snapshot
-    awful.key({ }, "Print", function () awful.util.spawn("xfce4-screenshooter", false) end),
+    -- awful.key({ modkey }, "p", function() menubar.show() end,
+              -- {description = "show the menubar", group = "launcher"}),
 
-    -- File manager
-    awful.key({ modkey }, "f", function () awful.util.spawn("thunar", false) end)
+    -- Applications
+    awful.key({ modkey }, "p" , function () awful.util.spawn("xfce4-screenshooter", false) end,
+              {description = "run screenshot", group = "applications"})
 )
 
 clientkeys = gears.table.join(

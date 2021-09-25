@@ -350,7 +350,9 @@ globalkeys = gears.table.join(
               -- {description = "show the menubar", group = "launcher"}),
 
     -- Applications
-    awful.key({ modkey }, "p" , function () awful.util.spawn("xfce4-screenshooter", false) end,
+    -- awful.key({ modkey }, "p" , function () awful.util.spawn("xfce4-screenshooter", false) end,
+              -- {description = "run screenshot", group = "applications"})
+    awful.key({ modkey }, "p" , function () awful.util.spawn("flameshot gui", false) end,
               {description = "run screenshot", group = "applications"})
 )
 

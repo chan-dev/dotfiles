@@ -248,7 +248,7 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
@@ -353,7 +353,9 @@ globalkeys = gears.table.join(
     -- awful.key({ modkey }, "p" , function () awful.util.spawn("xfce4-screenshooter", false) end,
               -- {description = "run screenshot", group = "applications"})
     awful.key({ modkey }, "p" , function () awful.util.spawn("flameshot gui", false) end,
-              {description = "run screenshot", group = "applications"})
+              {description = "run screenshot", group = "applications"}),
+    awful.key({ modkey }, "l" , function () awful.util.spawn("peek", false) end,
+              {description = "run gif/mp4 screen recording", group = "applications"})
 )
 
 clientkeys = gears.table.join(

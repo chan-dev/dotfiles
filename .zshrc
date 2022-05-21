@@ -137,6 +137,17 @@ alias -g T='| tail'
 alias -g L='| less'
 alias -g F='| fzf'
 alias -g C='| xclip -in -selection clipboard'
+# search stdout and open file in vim
+alias -g OE='| fzf | xargs -r $EDITOR'
+
+# Pass the file as the stdout on fzf
+# When a user picks a file pipe it to open vim ($EDITOR)
+openf() { fzf | xargs -r $EDITOR }
+# Use this second form if you want to target a specific directory
+openfd() { ls -l $1 | awk '{ print $NF }' | fzf | xargs -r $EDITOR }
+cleanlocal() { git branch --merged | egrep -v "(^\*|master|dev|integration)" | xargs git branch -d }
+cleanremote() { git fetch --prune && git branch --remotes --merged | sed 's/origin\///' | xargs git push origin --delete }
+
 
 # Key Bindings
 bindkey '^ ' autosuggest-accept

@@ -1,21 +1,25 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 export APP_IMAGE=/home/chan-dev/.local/bin
 export PATH=$PATH:$APP_IMAGE
 
-export CUSTOM_SCRIPTS=/home/chan-dev/Coding/bash/scripts
+export CUSTOM_SCRIPTS=/home/chan-dev/Coding/bash_functions
 export PATH=$PATH:$CUSTOM_SCRIPTS
+
+export ANDROID_SDK_ROOT=/home/chan-dev/Android_SDK
+export ANDROID_HOME=$ANDROID_SDK_ROOT
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/tools
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/chan-dev/.oh-my-zsh"
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
 
-if type rg &> /dev/null; then
-    export FZF_DEFAULT_COMMAND='rg --files'
-    export FZF_DEFAULT_OPTS='-m --height 50% --border'
-fi
+# if type rg &> /dev/null; then
+    # export FZF_DEFAULT_COMMAND='rg --files'
+    # export FZF_DEFAULT_OPTS='-m --height 50% --border'
+# fi
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -81,7 +85,7 @@ ZSH_THEME="awesomepanda"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ng git git-flow gitignore zsh-autosuggestions tmux docker docker-compose zsh-syntax-highlighting)
+plugins=(ng git git-flow gitignore zsh-autosuggestions tmux docker docker-compose zsh-syntax-highlighting aws)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -142,11 +146,13 @@ alias -g OE='| fzf | xargs -r $EDITOR'
 
 # Pass the file as the stdout on fzf
 # When a user picks a file pipe it to open vim ($EDITOR)
-openf() { fzf | xargs -r $EDITOR }
+openf() { fzf | xargs -I % -r $EDITOR % }
 # Use this second form if you want to target a specific directory
-openfd() { ls -l $1 | awk '{ print $NF }' | fzf | xargs -r $EDITOR }
+# openfd() { ls -l $1 | awk '{ print $NF }' | fzf | xargs -I % -r $EDITOR % }
 cleanlocal() { git branch --merged | egrep -v "(^\*|master|dev|integration)" | xargs git branch -d }
-cleanremote() { git fetch --prune && git branch --remotes --merged | sed 's/origin\///' | xargs git push origin --delete }
+cleanremote() { git fetch --prune && git branch --remotes --merged | sed 's|origin/||' | xargs git push origin --delete }
+copyf() { cp -v $(fd . ~ -tf | fzf --delimiter=",") $(fd . ~ -td | fzf --delimiter=",") }
+historycp() { history | awk '{ $1=""; print }' | tr -s ' ' | fzf | xclip -selection clipboard }
 
 
 # Key Bindings
@@ -159,3 +165,4 @@ export NVM_DIR=~/.nvm
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
+export PATH=/home/chan-dev/.pyenv/versions/3.7.2/bin:$PATH

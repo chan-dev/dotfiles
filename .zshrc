@@ -153,6 +153,7 @@ cleanlocal() { git branch --merged | egrep -v "(^\*|master|dev|integration)" | x
 cleanremote() { git fetch --prune && git branch --remotes --merged | sed 's|origin/||' | xargs git push origin --delete }
 copyf() { cp -v $(fd . ~ -tf | fzf --delimiter=",") $(fd . ~ -td | fzf --delimiter=",") }
 historycp() { history | awk '{ $1=""; print }' | tr -s ' ' | fzf | xclip -selection clipboard }
+getpath() { echo $PATH | tr ":" "\n" }
 
 
 # Key Bindings

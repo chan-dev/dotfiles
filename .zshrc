@@ -154,6 +154,8 @@ cleanremote() { git fetch --prune && git branch --remotes --merged | sed 's|orig
 copyf() { cp -v $(fd . ~ -tf | fzf --delimiter=",") $(fd . ~ -td | fzf --delimiter=",") }
 historycp() { history | awk '{ $1=""; print }' | tr -s ' ' | fzf | xclip -selection clipboard }
 getpath() { echo $PATH | tr ":" "\n" }
+openbook() { fd . ~/Documents/books -e pdf | fzf | xargs -I % xdg-open % }
+viewrepo() { gh repo list | fzf | awk '{ print $1 }' | sed 's|chan-dev/||' | xargs gh repo view --web }
 
 
 # Key Bindings

@@ -6,6 +6,11 @@ alias vpns='sudo protonvpn c --fastest'
 alias vpnd='sudo protonvpn d'
 alias netchk='nmcli connection show --active'
 
+# Git
+# Note the `\*` symbol in the pattern is for the current branch
+# Current branches are preceded with *
+alias cleanbranches='git branch --merged | egrep -v "(^\*|master|dev|integration)" | xargs git branch -d'
+
 # npm scripts
 alias nps='npm run start'
 alias npb='npm run build'

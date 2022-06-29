@@ -157,6 +157,9 @@ getpath() { echo $PATH | tr ":" "\n" }
 openbook() { fd . ~/Documents/books -e pdf | fzf | xargs -I % xdg-open % }
 viewrepo() { gh repo list | fzf | awk '{ print $1 }' | sed 's|chan-dev/||' | xargs gh repo view --web }
 
+# Git
+upstream_current_branch() { git push -u origin $(git branch --show-current) }
+
 
 # Key Bindings
 bindkey '^ ' autosuggest-accept

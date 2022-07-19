@@ -112,9 +112,9 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshrc="vim ~/.zshrc"
-alias tmuxconf="vim ~/.tmux.conf"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias zshrc='vim ~/.zshrc'
+alias tmuxconf='vim ~/.tmux.conf'
+alias ohmyzsh='vim ~/.oh-my-zsh'
 alias dot='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 alias cls='clear'
 alias findports='sudo lsof -i -P -n | grep LISTEN'
@@ -149,8 +149,12 @@ alias -g OE='| fzf | xargs -r $EDITOR'
 openf() { fzf | xargs -I % -r $EDITOR % }
 # Use this second form if you want to target a specific directory
 # openfd() { ls -l $1 | awk '{ print $NF }' | fzf | xargs -I % -r $EDITOR % }
-cleanlocal() { git branch --merged | egrep -v "(^\*|master|dev|integration)" | xargs git branch -d }
-cleanremote() { git fetch --prune && git branch --remotes --merged | sed 's|origin/||' | xargs git push origin --delete }
+cleanlocal() { git fetch --prune | git branch --merged | egrep -v "(^\*|master|dev|integration|release)" | xargs git branch -d }
+# NOTE: be careful running this one
+# Check if there's other branches you want to exclude before running this
+# You can optionally remove `--merged` to cleanup remote branches that are not
+# yet merged
+cleanremote() { git fetch --prune && git branch --remotes --merged | egrep -v "(^\*|master|dev|integration|release)" | sed 's|origin/||' | xargs git push origin --delete }
 copyf() { cp -v $(fd . ~ -tf | fzf --delimiter=",") $(fd . ~ -td | fzf --delimiter=",") }
 historycp() { history | awk '{ $1=""; print }' | tr -s ' ' | fzf | xclip -selection clipboard }
 getpath() { echo $PATH | tr ":" "\n" }
@@ -159,6 +163,7 @@ viewrepo() { gh repo list | fzf | awk '{ print $1 }' | sed 's|chan-dev/||' | xar
 
 # Git
 upstream_current_branch() { git push -u origin $(git branch --show-current) }
+git_switch() {  git switch $(git branch | fzf | awk '{ print $1 }') }
 
 
 # Key Bindings

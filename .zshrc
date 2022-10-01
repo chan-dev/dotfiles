@@ -149,21 +149,105 @@ alias -g OE='| fzf | xargs -r $EDITOR'
 openf() { fzf | xargs -I % -r $EDITOR % }
 # Use this second form if you want to target a specific directory
 # openfd() { ls -l $1 | awk '{ print $NF }' | fzf | xargs -I % -r $EDITOR % }
-cleanlocal() { git fetch --prune | git branch --merged | egrep -v "(^\*|master|dev|integration|release)" | xargs git branch -d }
+cleanlocal() { git fetch --prune | git --no-pager branch --merged | egrep -v "(^\*|master|dev|integration|release)" | xargs git branch -d }
 # NOTE: be careful running this one
 # Check if there's other branches you want to exclude before running this
 # You can optionally remove `--merged` to cleanup remote branches that are not
 # yet merged
-cleanremote() { git fetch --prune && git branch --remotes --merged | egrep -v "(^\*|master|dev|integration|release)" | sed 's|origin/||' | xargs git push origin --delete }
+cleanremote() { git fetch --prune && git --no-pager branch --remotes --merged | egrep -v "(^\*|master|dev|integration|release)" | sed 's|origin/||' | xargs git push origin --delete }
 copyf() { cp -v $(fd . ~ -tf | fzf --delimiter=",") $(fd . ~ -td | fzf --delimiter=",") }
-historycp() { history | awk '{ $1=""; print }' | tr -s ' ' | fzf | xclip -selection clipboard }
+historycp() { history | sort --reverse --numeric-sort | fzf | awk '{ $1=""; print }' | tr -s ' ' | xclip -selection clipboard }
 getpath() { echo $PATH | tr ":" "\n" }
 openbook() { fd . ~/Documents/books -e pdf | fzf | xargs -I % xdg-open % }
 viewrepo() { gh repo list | fzf | awk '{ print $1 }' | sed 's|chan-dev/||' | xargs gh repo view --web }
+# If bash alias is NOT accepting arguments, it's better to use alias than bash
+# function. Moreover, you can check the underlying command in alias by running
+# `type aliasName`
+alias switch_recent='git branch --sort=-committerdate | fzf --header="Checkout recent changed branch" --height="100%" --preview="git log {1} --color=always -p" | xargs git checkout'
 
 # Git
+# /dev/tty is a special file which is an alias to the terminal of the current
+# process
+alias current_branch='git branch --show-current | tee /dev/tty | xclip -selection clipboard'
 upstream_current_branch() { git push -u origin $(git branch --show-current) }
 git_switch() {  git switch $(git branch | fzf | awk '{ print $1 }') }
+# Used this with `C` zsh suffix alias
+# pick_branch C
+pick_branch() { git branch | fzf | awk '{ print $1 }' }
+# get modified file, useful when you want to checkout a particular file with
+# long nested path
+# Usage: git checkout `mod_file`
+# git ol `mod_file` - get all commits that have introduced changes to this
+# file
+# -uno === --untracked-files=no - don't include untracked file
+mod_file() {  git status -s -uno | fzf | awk '{ print $2 }' }
+
+# Docker
+pick_container() { docker ps -a --format '{{.Names}}' | fzf }
+container_cleanup() { docker kill `docker ps -q` && docker container prune -f }
+image_cleanup() { docker rmi $(docker images -f "dangling=true" -q) }
+pick_network() { docker network ls --format="{{ .Name }}" | fzf }
+ps_network() { docker network inspect --format="{{ json .Containers }}" $(pick_network) | python -m json.tool }
+compose_down_cleanup() { docker-compose down --rmi 'all' -v }
+
+# check gum cli package for enhancement
+cleanAndReset() {
+    # TODO: find a way to select directory to cd into in the dev-playground
+    cd ~/dev-playground/angular-playground
+    # cd doesn't work with xargs as explained in this stackoverflow answer
+    # https://superuser.com/a/701389
+    # ls | fzf | xargs cd
+    git switch master --discard-changes
+    git reset --hard
+    git clean -fd
+    code .
+}
+
+# Dev Playground
+alias cdPlayground="cd ~/dev-playground"
+alias playAngular="cd ~/dev-playground/angular-playground && cleanAndReset"
+
+alias cdWeava="cd ~/Coding/weava"
+
+openPR() {
+    currentBranch=`git branch --show-current`
+    xdg-open "https://bitbucket.org/weava/$1/pull-requests/new?source=$currentBranch&t=1"
+}
+
+# Bitbucket
+upstream_pr() {
+    if [ -z $1 ]; then
+        echo "Using the current directory as the repository name"
+        defaultRepository=$(basename $(pwd))
+        upstream_current_branch && openPR $defaultRepository
+    else
+        upstream_current_branch && openPR $1
+    fi
+}
+
+# Utilities
+# AWS
+# check if required CORS response headers are present
+# Source: https://www.mslinn.com/blog/2021/03/21/cors-aws.html
+function testCors() {
+    ORIGIN=$1
+    S3OBJECT_PATH=$2
+    METHOD=$3
+
+    if [ -z "$ORIGIN" ]; then echo "No Origin Url is provided"; exit 1; fi
+    if [ -z "$S3OBJECT_PATH" ]; then echo "No S3 Object path is provided is provided"; exit 1; fi
+    if [ -z "$METHOD" ]; then METHOD=GET; fi
+
+    echo "The URL passed is $S3OBJECT_PATH"
+
+
+    curl -I -X OPTIONS \
+        --no-progress-meter \
+        -H "Origin: $ORIGIN"
+        -H "Access-Control-Request-Method: $METHOD" \
+        "$S3OBJECT_PATH" | \
+        grep --color=never 'Access-Control'
+}
 
 
 # Key Bindings
@@ -177,3 +261,7 @@ export NVM_DIR=~/.nvm
 
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 export PATH=/home/chan-dev/.pyenv/versions/3.7.2/bin:$PATH
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

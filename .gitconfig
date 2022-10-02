@@ -14,18 +14,28 @@
 	editor = vim
 [alias]
     ol = log --oneline
+    d = diff
     dc = diff --cached
     dd = diff --check --dirstat --find-copies --find-renames --histogram --color
     sb = status
+    # expand the folder to show files
+    sbu = status -u
     ll = log --graph --topo-order --abbrev-commit --date=short --decorate --all --boundary --pretty=format:'%Cgreen%ad %Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue[%cn]%Creset %Cblue%G?%Creset'
     uncommit = reset --soft HEAD~1
     cm = commit -m
     override = commit --amend --no-edit
+    # useful when you want to make the commit message from the previous commit
+    editmsg = commit --reedit-message=HEAD
     fu = commit --fixup
     rif = rebase -i --autosquash
     # find deleted stash or any dangling commits
     fds = fsck --no-reflog --dangling
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+    commitcopy = commit --reedit-message=HEAD@{0}
+    list-subtrees = !"git log | grep git-subtree-dir | awk '{ print $2 }' | uniq"
+; [url "git@github.com:"]
+	; insteadOf = https://github.com/
 [init]
 	defaultBranch = main
+[credential "https://github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential

@@ -24,7 +24,7 @@
     uncommit = reset --soft HEAD~1
     cm = commit -m
     override = commit --amend --no-edit
-    # useful when you want to make the commit message from the previous commit
+    # useful when you want to update the commit message from the previous commit
     editmsg = commit --reedit-message=HEAD
     fu = commit --fixup
     rif = rebase -i --autosquash

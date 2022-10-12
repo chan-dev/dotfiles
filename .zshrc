@@ -205,8 +205,21 @@ cleanAndReset() {
 # Dev Playground
 alias cdPlayground="cd ~/dev-playground"
 alias playAngular="cd ~/dev-playground/angular-playground && cleanAndReset"
+alias playExtension="cd ~/dev-playground/chrome-extension-playground && cleanAndReset"
 
 alias cdWeava="cd ~/Coding/weava"
+
+# Github
+cloneExtension() {
+    targetDirectory=$1
+    git clone git@github.com:chan-dev/chrome-extension-playground.git $targetDirectory
+    cd $targetDirectory
+    # start with a clean slate
+    rm -rf .git
+    git init
+    git add .
+    git commit -m "Initial commit"
+}
 
 openPR() {
     currentBranch=`git branch --show-current`

@@ -193,11 +193,10 @@ compose_down_cleanup() { docker-compose down --rmi 'all' -v }
 # check gum cli package for enhancement
 cleanAndReset() {
     # TODO: find a way to select directory to cd into in the dev-playground
-    cd ~/dev-playground/angular-playground
     # cd doesn't work with xargs as explained in this stackoverflow answer
     # https://superuser.com/a/701389
     # ls | fzf | xargs cd
-    git switch master --discard-changes
+    git switch main --discard-changes
     git reset --hard
     git clean -fd
     code .

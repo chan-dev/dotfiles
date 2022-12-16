@@ -354,7 +354,7 @@ globalkeys = gears.table.join(
               -- {description = "run screenshot", group = "applications"})
     awful.key({ modkey }, "p" , function () awful.util.spawn("flameshot gui", false) end,
               {description = "run screenshot", group = "applications"}),
-    awful.key({ modkey }, "l" , function () awful.util.spawn("peek", false) end,
+    awful.key({ modkey }, "u" , function () awful.util.spawn("peek", false) end,
               {description = "run gif/mp4 screen recording", group = "applications"})
 )
 

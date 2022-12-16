@@ -137,7 +137,7 @@ alias mv='mv -i'
 
 # Global aliases
 alias -g G='| grep'
-alias -g T='| tail'
+alias -g T='| tail | sort --reverse'
 alias -g L='| less'
 alias -g F='| fzf'
 alias -g C='| xclip -in -selection clipboard'
@@ -170,10 +170,10 @@ alias switch_recent='git branch --sort=-committerdate | fzf --header="Checkout r
 # process
 alias current_branch='git branch --show-current | tee /dev/tty | xclip -selection clipboard'
 upstream_current_branch() { git push -u origin $(git branch --show-current) }
-git_switch() {  git switch $(git branch | fzf | awk '{ print $1 }') }
 # Used this with `C` zsh suffix alias
 # pick_branch C
 pick_branch() { git branch | fzf | awk '{ print $1 }' }
+git_switch() {  git switch $(pick_branch) }
 # get modified file, useful when you want to checkout a particular file with
 # long nested path
 # Usage: git checkout `mod_file`
@@ -203,9 +203,10 @@ cleanAndReset() {
 }
 
 # Dev Playground
-alias cdPlayground="cd ~/dev-playground"
+alias cdAngular="cd ~/dev-playground/angular-playground"
 alias playAngular="cd ~/dev-playground/angular-playground && cleanAndReset"
-alias playExtension="cd ~/dev-playground/chrome-extension-playground && cleanAndReset"
+alias cdExtension="cd ~/dev-playground/chrome-extension-playground"
+alias playExtension="cdExtension && cleanAndReset"
 
 alias cdWeava="cd ~/Coding/weava"
 
@@ -273,6 +274,10 @@ export NVM_DIR=~/.nvm
 
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
 export PATH=/home/chan-dev/.pyenv/versions/3.7.2/bin:$PATH
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
 
 
 # Load Angular CLI autocompletion.

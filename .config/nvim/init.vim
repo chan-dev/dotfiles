@@ -470,6 +470,13 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
+" Mappings for ranger
+" Make Ranger replace netrw and be the file explorer
+let g:rnvimr_ex_enable = 1
+let g:rnvimr_enable_picker = 1
+nmap <space>r :RnvimrToggle<CR>
+
+
 " ---AUTOCOMMANDS---
 
 " Triger `autoread` when files changes on disk
@@ -548,9 +555,11 @@ Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'wakatime/vim-wakatime'
 Plug 'preservim/nerdtree' |
-            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-            \ Plug 'ryanoasis/vim-devicons'
+	    \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+	    \ Plug 'ryanoasis/vim-devicons'
+Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 
 " Initialize plugin system
 call plug#end()

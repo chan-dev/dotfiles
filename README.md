@@ -25,6 +25,10 @@
    ```
     If there are any conflicts, make sure to backup the files first -- for example, it conflicts with current `.bashrc`.
     Then backup by `cp ~/.bashrc ~/.bashrc-old`
-    
+
+    By default,newly installed neovim don't have user configuration under `~/.config`,
+    if this results in a conflict feel free to remove `.config/nvim` in your system especially
+    if you're using a customized neovim such as **LunarVim**.
+
 Reference:
 https://www.youtube.com/watch?v=tBoLDpTWVOM

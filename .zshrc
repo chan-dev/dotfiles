@@ -134,9 +134,10 @@ alias h='history'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias lsd='ls -d1 */'
 
 # Global aliases
-alias -g G='| grep'
+alias -g G='| grep -i'
 alias -g T='| tail | sort --reverse'
 alias -g L='| less'
 alias -g F='| fzf'
@@ -156,7 +157,7 @@ cleanlocal() { git fetch --prune | git --no-pager branch --merged | egrep -v "(^
 # yet merged
 cleanremote() { git fetch --prune && git --no-pager branch --remotes --merged | egrep -v "(^\*|master|dev|integration|release)" | sed 's|origin/||' | xargs git push origin --delete }
 copyf() { cp -v $(fd . ~ -tf | fzf --delimiter=",") $(fd . ~ -td | fzf --delimiter=",") }
-historycp() { history | sort --reverse --numeric-sort | fzf | awk '{ $1=""; print }' | tr -s ' ' | xclip -selection clipboard }
+historycp() { history | sort --reverse --numeric-sort | fzf --no-sort | awk '{ $1=""; print }' | tr -s ' ' | xclip -selection clipboard }
 getpath() { echo $PATH | tr ":" "\n" }
 openbook() { fd . ~/Documents/books -e pdf | fzf | xargs -I % xdg-open % }
 viewrepo() { gh repo list | fzf | awk '{ print $1 }' | sed 's|chan-dev/||' | xargs gh repo view --web }
@@ -208,6 +209,7 @@ alias playAngular="cd ~/dev-playground/angular-playground && cleanAndReset"
 alias cdExtension="cd ~/dev-playground/chrome-extension-playground"
 alias playExtension="cdExtension && cleanAndReset"
 
+alias cdCoding="cd ~/Coding"
 alias cdWeava="cd ~/Coding/weava"
 
 # Github

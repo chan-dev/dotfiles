@@ -211,6 +211,8 @@ alias playExtension="cdExtension && cleanAndReset"
 
 alias cdCoding="cd ~/Coding"
 alias cdWeava="cd ~/Coding/weava"
+alias cdReview="cd ~/written_reviews"
+alias cdSideProjects="cd ~/Coding/side-projects"
 
 # Github
 cloneExtension() {
@@ -275,12 +277,6 @@ export NVM_DIR=~/.nvm
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases
-export PATH=/home/chan-dev/.pyenv/versions/3.7.2/bin:$PATH
-
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)

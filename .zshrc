@@ -174,6 +174,7 @@ upstream_current_branch() { git push -u origin $(git branch --show-current) }
 # Used this with `C` zsh suffix alias
 # pick_branch C
 pick_branch() { git branch | fzf | awk '{ print $1 }' }
+pick_commit() { git log --oneline | fzf | awk '{ print $1 }' }
 git_switch() {  git switch $(pick_branch) }
 
 # This command is usually helpful when trying to run GIT commans on modified

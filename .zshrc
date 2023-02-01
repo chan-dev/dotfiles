@@ -169,11 +169,12 @@ alias switch_recent='git branch --sort=-committerdate | fzf --header="Checkout r
 # Git
 # /dev/tty is a special file which is an alias to the terminal of the current
 # process
-alias current_branch='git branch --show-current | tee /dev/tty | xclip -selection clipboard'
+alias current_branch='git branch --show-current'
+alias copy_current_branch='git branch --show-current | tee /dev/tty | xclip -selection clipboard'
 upstream_current_branch() { git push -u origin $(git branch --show-current) }
 # Used this with `C` zsh suffix alias
 # pick_branch C
-pick_branch() { git branch | fzf | awk '{ print $1 }' }
+pick_branch() { git branch | fzf | sed 's|[+*]||' | awk '{ print $1 }' }
 pick_commit() { git log --oneline | fzf | awk '{ print $1 }' }
 git_switch() {  git switch $(pick_branch) }
 

@@ -122,6 +122,10 @@ alias findports='sudo lsof -i -P -n | grep LISTEN'
 # docker prune images/container
 alias dock_pi='docker rmi $(docker images -f "dangling=true" -q)'
 alias dock_pc='docker container prune'
+# test commands under alpine container
+# default command is sh
+# example: dockerun ls - run ls under alpine image
+alias dockerun="docker run -it --rm alpine:3.18.2 $@"
 
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
@@ -135,6 +139,8 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias lsd='ls -d1 */'
+
+alias showcalendar='python -m calendar'
 
 # Global aliases
 alias -g G='| grep -i'
@@ -159,12 +165,13 @@ cleanremote() { git fetch --prune && git --no-pager branch --remotes --merged | 
 copyf() { cp -v $(fd . ~ -tf | fzf --delimiter=",") $(fd . ~ -td | fzf --delimiter=",") }
 historycp() { history | sort --reverse --numeric-sort | fzf --no-sort | awk '{ $1=""; print }' | tr -s ' ' | xclip -selection clipboard }
 getpath() { echo $PATH | tr ":" "\n" }
-openbook() { fd . ~/Documents/books -e pdf | fzf | xargs -I % xdg-open % }
+openbook() { fd . ~/Documents/books -e pdf | fzf | xargs -I % xdg-open "%" }
 viewrepo() { gh repo list | fzf | awk '{ print $1 }' | sed 's|chan-dev/||' | xargs gh repo view --web }
 # If bash alias is NOT accepting arguments, it's better to use alias than bash
 # function. Moreover, you can check the underlying command in alias by running
 # `type aliasName`
 alias switch_recent='git branch --sort=-committerdate | fzf --header="Checkout recent changed branch" --height="100%" --preview="git log {1} --color=always -p" | xargs git checkout'
+alias fixup='git commit --fixup $(pick_commit)'
 
 # Git
 # /dev/tty is a special file which is an alias to the terminal of the current
@@ -218,6 +225,16 @@ alias cdCoding="cd ~/Coding"
 alias cdWeava="cd ~/Coding/weava"
 alias cdReview="cd ~/written_reviews"
 alias cdSideProjects="cd ~/Coding/side-projects"
+
+alias pkgversion="jq '.version' package.json"
+alias resetPkgChanges="git reset package*"
+# --no-git-tag-version - do not create a git commit and tag
+# $1 = major | minor | patch
+# default = patch
+upPkgVersion() {
+  npm version "${1:-patch}" --no-git-tag-version
+}
+
 
 # Github
 cloneExtension() {

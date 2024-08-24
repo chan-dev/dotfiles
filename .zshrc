@@ -264,6 +264,13 @@ upstream_pr() {
     fi
 }
 
+# Fuzzy-search and open file in lunarvim
+fv() {
+  if [ -n "$1" ]; then
+    rg "$1" | fzf | cut -d ':' -f 1 | xargs lvim
+  fi
+}
+
 # Utilities
 # AWS
 # check if required CORS response headers are present
@@ -302,3 +309,4 @@ export NVM_DIR=~/.nvm
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+source <(fzf --zsh)
